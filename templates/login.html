@@ -6,6 +6,14 @@
 <!-- 「block content」から「endblock」までを「base.html」の同様の部分に挿入する。 -->
 {% block content %}
 <div class="container">
+    <!-- flashメッセージを表示。 -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <h1>ログイン画面</h1>
     <!-- 新規登録ボタンを押すと、POSTが送信される。 -->
     <form method="POST">

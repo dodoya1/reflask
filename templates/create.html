@@ -5,6 +5,14 @@
 <h1>新規投稿</h1>
 <!-- 新規投稿ボタンを押すと、POSTが送信される。 -->
 <form method="POST">
+    <!-- flashメッセージを表示。 -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <label for="title">タイトル</label>
     <input type="text" name="title">
     <label for="body">内容</label>

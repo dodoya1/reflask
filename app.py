@@ -89,9 +89,17 @@ def login():
         password = request.form.get('password')
 
         user = User.query.filter_by(username=username).first()
-        if check_password_hash(user.password, password):
-            login_user(user)
-            return redirect('/')
+        #入力に一致したユーザー名が存在しない場合。
+        if user == None:
+            flash("ユーザー名またはパスワードが間違っています")
+            return render_template('login.html')
+        else:
+            if check_password_hash(user.password, password):
+                login_user(user)
+                return redirect('/')
+            else:
+                flash("ユーザー名またはパスワードが間違っています")
+                return render_template('login.html')
     else:
         return render_template('login.html')
 
@@ -118,15 +126,20 @@ def create():
         title=request.form.get("title")
         body=request.form.get("body")
 
-        #Postクラスに、titleとbodyを入れてデータを新規作成する。idとcreated_atは勝手に決定する。
-        post=Post(title=title,body=body)
-        #追加する。
-        db.session.add(post)
-        #変更をDBに反映する。
-        db.session.commit()
+        #titleまたはbodyが空の場合。
+        if title=="" or body=="":
+            flash("空の状態では投稿できません")
+            return render_template("create.html")
+        else:
+            #Postクラスに、titleとbodyを入れてデータを新規作成する。idとcreated_atは勝手に決定する。
+            post=Post(title=title,body=body)
+            #追加する。
+            db.session.add(post)
+            #変更をDBに反映する。
+            db.session.commit()
 
-        #ホーム画面に戻る。
-        return redirect("/")
+            #ホーム画面に戻る。
+            return redirect("/")
     else:
         return render_template("create.html")
 
