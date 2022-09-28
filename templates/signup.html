@@ -1,0 +1,15 @@
+<!-- extends "base.html"によって、「base.html」ファイルにエクスポートする。 -->
+{% extends "base.html" %}
+<!-- 「block content」から「endblock」までを「base.html」の同様の部分に挿入する。 -->
+{% block content %}
+<h1>ユーザー登録</h1>
+<!-- 新規登録ボタンを押すと、POSTが送信される。 -->
+<form method="POST">
+    <label for="">ユーザー名</label>
+    <input type="text" name="username">
+    <label for="">パスワード</label>
+    <!-- typeをpasswordとすることで、黒点々の伏字になる。 -->
+    <input type="password" name="password">
+    <input type="submit" value="新規登録">
+</form>
+{% endblock %}

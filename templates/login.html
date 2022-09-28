@@ -1,0 +1,21 @@
+<!-- extends "base.html"によって、「base.html」ファイルにエクスポートする。 -->
+<!-- bootstrap/を書くことで、bootstrapを適用。 -->
+{% extends "bootstrap/base.html" %}
+{% block title %}ログインページ{% endblock %}
+
+<!-- 「block content」から「endblock」までを「base.html」の同様の部分に挿入する。 -->
+{% block content %}
+<div class="container">
+    <h1>ログイン画面</h1>
+    <!-- 新規登録ボタンを押すと、POSTが送信される。 -->
+    <form method="POST">
+        <!-- BootstrapのFORMについてはhttps://getbootstrap.jp/docs/5.0/forms/overview/　を参考にした。 -->
+        <label for="" class="form-label">ユーザー名</label>
+        <input type="text" name="username" class="form-control">
+        <label for="" class="form-label">パスワード</label>
+        <!-- typeをpasswordとすることで、黒点々の伏字になる。 -->
+        <input type="password" name="password" class="form-control">
+        <input type="submit" value="ログイン" class="btn btn-primary">
+    </form>
+</div>
+{% endblock %}
