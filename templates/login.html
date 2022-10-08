@@ -1,7 +1,7 @@
 <!-- extends "base.html"によって、「base.html」ファイルにエクスポートする。 -->
 <!-- bootstrap/を書くことで、bootstrapを適用。 -->
-{% extends "bootstrap/base.html" %}
-{% block title %}ログインページ{% endblock %}
+{% extends "base.html" %}
+{% block title %}ログイン{% endblock %}
 
 <!-- 「block content」から「endblock」までを「base.html」の同様の部分に挿入する。 -->
 {% block content %}
@@ -14,7 +14,7 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-    <h1>ログイン画面</h1>
+    <h1>ログイン</h1>
     <!-- 新規登録ボタンを押すと、POSTが送信される。 -->
     <form method="POST">
         <!-- BootstrapのFORMについてはhttps://getbootstrap.jp/docs/5.0/forms/overview/　を参考にした。 -->

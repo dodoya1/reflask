@@ -1,25 +1,20 @@
 <!-- extends "base.html"によって、「base.html」ファイルにエクスポートする。 -->
 <!-- bootstrap/を書くことで、bootstrapを適用。 -->
-{% extends "bootstrap/base.html" %}
-{% block title %}TOPページ{% endblock %}
+{% extends "base.html" %}
+{% block title %}ホーム{% endblock %}
 
 <!-- 「block content」から「endblock」までを「base.html」の同様の部分に挿入する。 -->
 {% block content %}
 <div class="container">
-    <h1>ブログアプリケーション</h1>
-    <!-- 新規投稿画面(/create)へ飛ぶボタンを作成。 -->
-    <a href="/create" role="button">新規投稿画面</a>
-    <a href="/logout" role="button">ログアウト</a>
-    {% for post in posts %}
-        <article>
-            <h2>{{post.title}}</h2>
-            <!-- 投稿編集画面(/<id>/update)へ飛ぶボタンを作成。 -->
-            <a href="/{{post.id}}/update" role="button">編集</a>
-            <!-- 削除(/<id>/delete)へ飛ぶボタンを作成。 -->
-            <a href="/{{post.id}}/delete" role="button">削除</a>
-            <p>作成日時:{{post.created_at}}</p>
-            <p>{{post.body}}</p>
-        </article>
-    {% endfor %}
+    <h1><a href="/problem_generation" role="button">バビ検を受験する</a></h1>
+    <p>事前にユーザー登録をするとランキングにユーザー名が残ります。</p>
+    <p>
+        バビ検とは、バビ語に翻訳する速さと文字数によってランクを得られるサイトです。
+
+        バビ語とは、入れ詞の一種です。
+        例えば「おはよう」はバビ語で「おぼはばよぼうぶ」となります。
+        
+        つまり、言葉の間に「ばびぶべぼ」を入れます。付け足す音は、直前の文字の母音とするという決まりがあります。「ん」には「ぶ」を適用します。
+    </p>
 </div>
 {% endblock %}

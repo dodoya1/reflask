@@ -1,0 +1,18 @@
+<!-- extends "base.html"によって、「base.html」ファイルにエクスポートする。 -->
+<!-- bootstrap/を書くことで、bootstrapを適用。 -->
+{% extends "base.html" %}
+{% block title %}ランキング{% endblock %}
+
+<!-- 「block content」から「endlock」までを「base.html」の同様の部分に挿入する。 -->
+{% block content %}
+<div class="container">
+    {% for i in range(ranking_len) %}
+        <!-- ゲストユーザーの場合。 -->
+        {% if ranking[i][0]==0 %}
+            <p>{{ i+1 }}位　ゲストユーザー　{{ ranking[i][1] }}点</p>
+        {% else %}
+            <p><a href="/results/{{ranking[i][2]}}" role="button">{{ i+1 }}位　{{ ranking[i][0] }}　{{ ranking[i][1] }}点</a></p>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

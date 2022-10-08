@@ -1,0 +1,13 @@
+<!-- extends "base.html"によって、「base.html」ファイルにエクスポートする。 -->
+<!-- bootstrap/を書くことで、bootstrapを適用。 -->
+{% extends "base.html" %}
+{% block title %}ユーザーページ{% endblock %}
+
+<!-- 「block content」から「endblock」までを「base.html」の同様の部分に挿入する。 -->
+{% block content %}
+<div class="container">
+    <p>ユーザー名</p>
+    <p>{{ user.username }}</p>
+    <p>最高得点 ◯点</p>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+<!-- extends "base.html"によって、「base.html」ファイルにエクスポートする。 -->
+<!-- bootstrap/を書くことで、bootstrapを適用。 -->
+{% extends "base.html" %}
+{% block title %}マイページ{% endblock %}
+
+<!-- 「block content」から「endblock」までを「base.html」の同様の部分に挿入する。 -->
+{% block content %}
+<div class="container">
+    <p>ユーザー名　{{ user.username }}</p>
+    <p>最高得点 {{ best_score }}点</p>
+    <p>最高ランキング　{{ best_rank }}</p>
+    {% for rank in my_result %}
+    <p><a href="/results/{{rank[0]}}" role="button">{{ rank[2] }}位　{{ rank[1] }}点</a></p>
+    {% endfor %}
+</div>
+{% endblock %}

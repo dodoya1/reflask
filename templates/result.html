@@ -1,0 +1,31 @@
+<!-- extends "base.html"によって、「base.html」ファイルにエクスポートする。 -->
+<!-- bootstrap/を書くことで、bootstrapを適用。 -->
+{% extends "base.html" %}
+{% block title %}結果{% endblock %}
+
+<!-- 「block content」から「endblock」までを「base.html」の同様の部分に挿入する。 -->
+{% block content %}
+<div class="container">
+    {% if problem.judgment==1 %}
+        <p>{{ username }}</p>
+        <h1>おめでとう、正解!ランキング◯位</h1>
+        <h2>正解するまでにかかった時間は{{ problem.time }}秒!</h2>
+        <h2>得点は{{ problem.score }}点</h2>
+        <p>「{{ problem.original }}」</p>
+        <p>は、バビ語で</p>
+        <p>{{ problem.babi }}</p>
+        <a href="/" role="button">もう一度挑戦する！</a>
+        <p>Tweetする</p>
+        <p>{{ problem.finish_time.strftime("%Y年%m月%d日%H:%M") }}</p>
+    {% else %}
+        <h1>残念ながら不正解</h1>
+        <h2>得点は0点</h2>
+        <p>「{{ problem.original }}」</p>
+        <p>は、バビ語で</p>
+        <p>{{ problem.babi }}</p>
+        <a href="/" role="button">もう一度挑戦する！</a>
+        <p>Tweetする</p>
+        <p>{{ problem.finish_time }}</p>
+    {% endif %}
+</div>
+{% endblock %}
